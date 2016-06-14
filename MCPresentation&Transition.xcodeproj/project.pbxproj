@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1829DC5F1D0FA806009EA8D4 /* MCTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829DC5E1D0FA806009EA8D4 /* MCTransitionDelegate.swift */; };
 		184F78B71D0EB52000E3915C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F78B61D0EB52000E3915C /* AppDelegate.swift */; };
 		184F78BC1D0EB52000E3915C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184F78BA1D0EB52000E3915C /* Main.storyboard */; };
 		184F78BE1D0EB52000E3915C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184F78BD1D0EB52000E3915C /* Assets.xcassets */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1829DC5E1D0FA806009EA8D4 /* MCTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTransitionDelegate.swift; sourceTree = "<group>"; };
+		1829DC601D0FAA4C009EA8D4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		184F78B31D0EB52000E3915C /* MCPresentation&Transition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MCPresentation&Transition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184F78B61D0EB52000E3915C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184F78BB1D0EB52000E3915C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 		184F78AA1D0EB52000E3915C = {
 			isa = PBXGroup;
 			children = (
+				1829DC601D0FAA4C009EA8D4 /* Reveal.framework */,
 				184F78B51D0EB52000E3915C /* MCPresentation&Transition */,
 				184F78CA1D0EB52000E3915C /* MCPresentation&TransitionTests */,
 				184F78B41D0EB52000E3915C /* Products */,
@@ -84,6 +88,7 @@
 				184F78B61D0EB52000E3915C /* AppDelegate.swift */,
 				184F78BA1D0EB52000E3915C /* Main.storyboard */,
 				184F78DA1D0EB9A100E3915C /* MCCoverVerticalTranstionAnimator.swift */,
+				1829DC5E1D0FA806009EA8D4 /* MCTransitionDelegate.swift */,
 				184F78BD1D0EB52000E3915C /* Assets.xcassets */,
 				184F78BF1D0EB52000E3915C /* LaunchScreen.storyboard */,
 				184F78C21D0EB52000E3915C /* Info.plist */,
@@ -203,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1829DC5F1D0FA806009EA8D4 /* MCTransitionDelegate.swift in Sources */,
 				184F78D71D0EB67E00E3915C /* MainViewController.swift in Sources */,
 				184F78B71D0EB52000E3915C /* AppDelegate.swift in Sources */,
 				184F78D91D0EB68500E3915C /* DetailViewController.swift in Sources */,
@@ -337,8 +343,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries";
 				INFOPLIST_FILE = "MCPresentation&Transition/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.gnou.MCPresentation-Transition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -348,8 +361,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries";
 				INFOPLIST_FILE = "MCPresentation&Transition/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.gnou.MCPresentation-Transition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -398,6 +418,7 @@
 				184F78D21D0EB52100E3915C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		184F78D31D0EB52100E3915C /* Build configuration list for PBXNativeTarget "MCPresentation&TransitionTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +427,7 @@
 				184F78D51D0EB52100E3915C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
