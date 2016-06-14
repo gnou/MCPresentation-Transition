@@ -11,12 +11,15 @@ import UIKit
 class MCTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     let coverVerticalTransitionAnimator = MCCoverVerticalTranstionAnimator()
+    let rotateTransitionAnimator = MCRotateTransitionAnimator()
 
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return coverVerticalTransitionAnimator
+//        return coverVerticalTransitionAnimator
+        return rotateTransitionAnimator
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return coverVerticalTransitionAnimator
+//        return coverVerticalTransitionAnimator
+        return rotateTransitionAnimator
     }
 }
