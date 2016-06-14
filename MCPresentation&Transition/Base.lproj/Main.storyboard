@@ -79,11 +79,13 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bj4-xA-Dzx">
                             <connections>
                                 <action selector="dismiss:" destination="YWT-hk-L1d" id="OLO-kG-CW7"/>
+                                <segue destination="AvI-w7-evm" kind="unwind" identifier="BackToMain" unwindAction="unwindToMain:" id="Tln-7Z-DZb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8X-qf-7Rp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AvI-w7-evm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2139" y="1246"/>
         </scene>

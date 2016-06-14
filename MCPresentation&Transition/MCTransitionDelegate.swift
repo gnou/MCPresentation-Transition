@@ -12,6 +12,8 @@ class MCTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     let coverVerticalTransitionAnimator = MCCoverVerticalTranstionAnimator()
     let rotateTransitionAnimator = MCRotateTransitionAnimator()
+    
+    var gestureRecognizer: UIScreenEdgePanGestureRecognizer?
 
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 //        return coverVerticalTransitionAnimator
@@ -21,5 +23,12 @@ class MCTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 //        return coverVerticalTransitionAnimator
         return rotateTransitionAnimator
+    }
+    
+    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        if let gestureRecognizer = gestureRecognizer {
+            return MCSwipeInteractiveTransition(edgePanGestureRecognizer: gestureRecognizer)
+        }
+        return nil
     }
 }

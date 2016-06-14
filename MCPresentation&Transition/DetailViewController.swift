@@ -9,11 +9,25 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    var gesture: UIScreenEdgePanGestureRecognizer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        gesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.handleEdgePanGestureRecognizer(_:)))
+        gesture?.edges = UIRectEdge.Left
+        view.addGestureRecognizer(gesture!)
+    }
+    
+    func handleEdgePanGestureRecognizer(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
+        if gestureRecognizer.state == .Began {
+            if let transitionDelegate = navigationController?.transitioningDelegate as? MCTransitionDelegate {
+                transitionDelegate.gestureRecognizer = gesture
+                performSegueWithIdentifier("BackToMain", sender: gestureRecognizer)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
