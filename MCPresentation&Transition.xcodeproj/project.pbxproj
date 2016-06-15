@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1829DC5F1D0FA806009EA8D4 /* MCTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829DC5E1D0FA806009EA8D4 /* MCTransitionDelegate.swift */; };
-		1829DC631D0FADEB009EA8D4 /* MCRotateTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829DC621D0FADEB009EA8D4 /* MCRotateTransitionAnimator.swift */; };
+		1829DC631D0FADEB009EA8D4 /* MCRotateDismissTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829DC621D0FADEB009EA8D4 /* MCRotateDismissTransitionAnimator.swift */; };
 		1829DC931D100028009EA8D4 /* MCSwipeInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829DC921D100028009EA8D4 /* MCSwipeInteractiveTransition.swift */; };
 		184F78B71D0EB52000E3915C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F78B61D0EB52000E3915C /* AppDelegate.swift */; };
 		184F78BC1D0EB52000E3915C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184F78BA1D0EB52000E3915C /* Main.storyboard */; };
@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		1829DC5E1D0FA806009EA8D4 /* MCTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTransitionDelegate.swift; sourceTree = "<group>"; };
 		1829DC601D0FAA4C009EA8D4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
-		1829DC621D0FADEB009EA8D4 /* MCRotateTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCRotateTransitionAnimator.swift; sourceTree = "<group>"; };
+		1829DC621D0FADEB009EA8D4 /* MCRotateDismissTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCRotateDismissTransitionAnimator.swift; sourceTree = "<group>"; };
 		1829DC921D100028009EA8D4 /* MCSwipeInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCSwipeInteractiveTransition.swift; sourceTree = "<group>"; };
 		184F78B31D0EB52000E3915C /* MCPresentation&Transition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MCPresentation&Transition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184F78B61D0EB52000E3915C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,12 +89,12 @@
 		184F78B51D0EB52000E3915C /* MCPresentation&Transition */ = {
 			isa = PBXGroup;
 			children = (
-				1829DC621D0FADEB009EA8D4 /* MCRotateTransitionAnimator.swift */,
+				184F78DA1D0EB9A100E3915C /* MCCoverVerticalTranstionAnimator.swift */,
+				1829DC621D0FADEB009EA8D4 /* MCRotateDismissTransitionAnimator.swift */,
 				1829DC921D100028009EA8D4 /* MCSwipeInteractiveTransition.swift */,
+				1829DC5E1D0FA806009EA8D4 /* MCTransitionDelegate.swift */,
 				184F78B61D0EB52000E3915C /* AppDelegate.swift */,
 				184F78BA1D0EB52000E3915C /* Main.storyboard */,
-				184F78DA1D0EB9A100E3915C /* MCCoverVerticalTranstionAnimator.swift */,
-				1829DC5E1D0FA806009EA8D4 /* MCTransitionDelegate.swift */,
 				184F78BD1D0EB52000E3915C /* Assets.xcassets */,
 				184F78BF1D0EB52000E3915C /* LaunchScreen.storyboard */,
 				184F78C21D0EB52000E3915C /* Info.plist */,
@@ -219,7 +219,7 @@
 				184F78B71D0EB52000E3915C /* AppDelegate.swift in Sources */,
 				1829DC931D100028009EA8D4 /* MCSwipeInteractiveTransition.swift in Sources */,
 				184F78D91D0EB68500E3915C /* DetailViewController.swift in Sources */,
-				1829DC631D0FADEB009EA8D4 /* MCRotateTransitionAnimator.swift in Sources */,
+				1829DC631D0FADEB009EA8D4 /* MCRotateDismissTransitionAnimator.swift in Sources */,
 				184F78DB1D0EB9A100E3915C /* MCCoverVerticalTranstionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

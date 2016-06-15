@@ -41,6 +41,6 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func unwindToMain(sender: UIStoryboardSegue) {
-        
+        print("Triggered unwind action")
     }
 }

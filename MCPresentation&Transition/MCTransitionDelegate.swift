@@ -11,23 +11,27 @@ import UIKit
 class MCTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     let coverVerticalTransitionAnimator = MCCoverVerticalTranstionAnimator()
-    let rotateTransitionAnimator = MCRotateTransitionAnimator()
     
-    var gestureRecognizer: UIScreenEdgePanGestureRecognizer?
+    /// Set this to be the gesture recognizer which will drive the interactivity for interactive transition
+    var edgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer?
+    var targetEdge: UIRectEdge?
 
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return coverVerticalTransitionAnimator
-        return rotateTransitionAnimator
+        return coverVerticalTransitionAnimator
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return coverVerticalTransitionAnimator
-        return rotateTransitionAnimator
+        if let _ = edgePanGestureRecognizer,
+            targetEdge = targetEdge {
+            return MCRotateDismissTransitionAnimator(targetEdge: targetEdge)
+        }
+        return coverVerticalTransitionAnimator
     }
     
     func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        if let gestureRecognizer = gestureRecognizer {
-            return MCSwipeInteractiveTransition(edgePanGestureRecognizer: gestureRecognizer)
+        if let gestureRecognizer = edgePanGestureRecognizer,
+            targetEdge = targetEdge {
+            return MCSwipeInteractiveTransition(edgePanGestureRecognizer: gestureRecognizer, edgeForDragging: targetEdge)
         }
         return nil
     }

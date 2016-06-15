@@ -78,7 +78,6 @@
                     <navigationItem key="navigationItem" title="Details" id="b8m-iQ-bNH">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bj4-xA-Dzx">
                             <connections>
-                                <action selector="dismiss:" destination="YWT-hk-L1d" id="OLO-kG-CW7"/>
                                 <segue destination="AvI-w7-evm" kind="unwind" identifier="BackToMain" unwindAction="unwindToMain:" id="Tln-7Z-DZb"/>
                             </connections>
                         </barButtonItem>
