@@ -35,4 +35,8 @@ class MCTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
         }
         return nil
     }
+    
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return MCPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
 }

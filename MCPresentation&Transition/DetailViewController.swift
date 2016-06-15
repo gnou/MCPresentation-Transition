@@ -11,10 +11,17 @@ import UIKit
 class DetailViewController: UIViewController {
     
 //    var gesture: UIScreenEdgePanGestureRecognizer?
+    @IBOutlet weak var bottomButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Do any additional setup after loading the view.
+        bottomButton.layer.borderWidth = 1.0
+        bottomButton.layer.borderColor = view.tintColor.CGColor
+        bottomButton.layer.cornerRadius = 5.0
+        bottomButton.clipsToBounds = true
+        
         // Do any additional setup after loading the view.
         let leftGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.handleEdgePanGestureRecognizer(_:)))
         leftGesture.edges = UIRectEdge.Left
@@ -53,4 +60,13 @@ class DetailViewController: UIViewController {
     }
     */
 
+//    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+//        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+//        
+//        updatePreferredContentSizeWithTraitCollection(newCollection)
+//    }
+//    
+//    func updatePreferredContentSizeWithTraitCollection(traitCollection: UITraitCollection) {
+//        preferredContentSize = view.bounds.size
+//    }
 }

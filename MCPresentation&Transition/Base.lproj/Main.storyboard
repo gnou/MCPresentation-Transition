@@ -24,11 +24,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoY-EP-os2">
-                                <rect key="frame" x="205" y="260" width="191" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <rect key="frame" x="205" y="260" width="191" height="40"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
                                 <state key="normal" title="SHOW DETAILS"/>
                                 <connections>
-                                    <segue destination="0Pg-he-v3u" kind="presentation" identifier="presentDetails" modalPresentationStyle="pageSheet" id="aao-fp-1Gf"/>
+                                    <segue destination="0Pg-he-v3u" kind="presentation" identifier="presentDetails" id="aao-fp-1Gf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -59,19 +59,27 @@
                         <viewControllerLayoutGuide type="bottom" id="kUq-57-16I"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="t15-UF-XmU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DETAILS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGg-cT-BBE">
-                                <rect key="frame" x="149" y="252" width="303" height="96"/>
+                                <rect key="frame" x="149" y="102" width="303" height="96"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="80"/>
                                 <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmn-a7-lDN">
+                                <rect key="frame" x="30" y="252" width="540" height="40"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                                <state key="normal" title="BOTTOM BUTTON"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UGg-cT-BBE" firstAttribute="centerY" secondItem="t15-UF-XmU" secondAttribute="centerY" id="8oL-Sb-vYm"/>
+                            <constraint firstItem="hmn-a7-lDN" firstAttribute="leading" secondItem="t15-UF-XmU" secondAttribute="leading" constant="30" id="KtN-W5-pA3"/>
+                            <constraint firstItem="hmn-a7-lDN" firstAttribute="centerX" secondItem="t15-UF-XmU" secondAttribute="centerX" id="TRM-d0-A6V"/>
+                            <constraint firstItem="kUq-57-16I" firstAttribute="top" secondItem="hmn-a7-lDN" secondAttribute="bottom" constant="8" id="mUF-ho-H6f"/>
                             <constraint firstItem="UGg-cT-BBE" firstAttribute="centerX" secondItem="t15-UF-XmU" secondAttribute="centerX" id="tIp-pp-BJm"/>
                         </constraints>
                     </view>
@@ -82,11 +90,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bottomButton" destination="hmn-a7-lDN" id="OJK-0S-9iM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8X-qf-7Rp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="AvI-w7-evm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2139" y="1246"/>
+            <point key="canvasLocation" x="2099" y="1246"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oFp-QB-8ix">
@@ -111,6 +122,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Pg-he-v3u" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="300"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iSl-oO-Hep">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

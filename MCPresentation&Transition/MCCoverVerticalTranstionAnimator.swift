@@ -15,13 +15,18 @@ class MCCoverVerticalTranstionAnimator: NSObject, UIViewControllerAnimatedTransi
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey),
-            toView = transitionContext.viewForKey(UITransitionContextToViewKey),
-            fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
-            toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
-            containerView = transitionContext.containerView() else {
-                return
-        }
+//        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey),
+//            toView = transitionContext.viewForKey(UITransitionContextToViewKey),
+//            fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
+//            toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
+//            containerView = transitionContext.containerView() else {
+//                return
+//        }
+        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
+        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
+        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        let containerView = transitionContext.containerView()
         
         let fromFrame = transitionContext.initialFrameForViewController(fromViewController)
         let toFrame = transitionContext.finalFrameForViewController(toViewController)
@@ -31,30 +36,34 @@ class MCCoverVerticalTranstionAnimator: NSObject, UIViewControllerAnimatedTransi
         let isPresenting = (toViewController.presentingViewController == fromViewController)
         
         if isPresenting {
-            fromView.frame = fromFrame
-            toView.frame = CGRectOffset(toFrame, 0, toFrame.size.height)
+            toView?.frame = CGRectOffset(toFrame, 0, toFrame.size.height)
         } else {
-            fromView.frame = fromFrame
-            toView.frame = toFrame
+            fromView?.frame = fromFrame
+            toView?.frame = toFrame
         }
         
         if isPresenting {
-            containerView.addSubview(toView)
+            if let toView = toView {
+                containerView?.addSubview(toView)
+            }
         } else {
-            containerView.insertSubview(toView, belowSubview: fromView)
+            if let fromView = fromView,
+                toView = toView {
+                containerView?.insertSubview(toView, belowSubview: fromView)
+            }
         }
         
         UIView.animateWithDuration(transitionDuration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: []
             , animations: {
                 if isPresenting {
-                    toView.frame = toFrame
+                    toView?.frame = toFrame
                 } else {
-                    fromView.frame = CGRectOffset(fromFrame, 0, fromFrame.size.height)
+                    fromView?.frame = CGRectOffset(fromFrame, 0, fromFrame.size.height)
                 }
         }) { (finished) in
             let wasCancelled = transitionContext.transitionWasCancelled()
             if wasCancelled {
-                toView.removeFromSuperview()
+                toView?.removeFromSuperview()
             }
             
             transitionContext.completeTransition(!wasCancelled)
