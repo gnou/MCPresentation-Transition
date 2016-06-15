@@ -32,41 +32,26 @@ class DetailViewController: UIViewController {
     }
     
     func handleEdgePanGestureRecognizer(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
-        if gestureRecognizer.state == .Began {
-            if let transitionDelegate = navigationController?.transitioningDelegate as? MCTransitionDelegate {
-                transitionDelegate.edgePanGestureRecognizer = gestureRecognizer
-                transitionDelegate.targetEdge = gestureRecognizer.edges
-                performSegueWithIdentifier("BackToMain", sender: gestureRecognizer)
-            }
-        }
+        performSegueWithIdentifier("BackToMain", sender: gestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func dismiss(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let transitionDelegate = navigationController?.transitioningDelegate as? MCTransitionDelegate {
+            if let gestureRecognizer = sender as? UIScreenEdgePanGestureRecognizer where gestureRecognizer.state == .Began {
+                transitionDelegate.edgePanGestureRecognizer = gestureRecognizer
+                transitionDelegate.targetEdge = gestureRecognizer.edges
+            } else {
+                transitionDelegate.edgePanGestureRecognizer = nil
+                transitionDelegate.targetEdge = nil
+            }
+        }
     }
-    */
-
-//    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-//        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
-//        
-//        updatePreferredContentSizeWithTraitCollection(newCollection)
-//    }
-//    
-//    func updatePreferredContentSizeWithTraitCollection(traitCollection: UITraitCollection) {
-//        preferredContentSize = view.bounds.size
-//    }
 }

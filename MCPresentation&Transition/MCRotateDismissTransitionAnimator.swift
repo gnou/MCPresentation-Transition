@@ -23,9 +23,9 @@ class MCRotateDismissTransitionAnimator: NSObject, UIViewControllerAnimatedTrans
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey),
-            toView = transitionContext.viewForKey(UITransitionContextToViewKey),
-            containerView = transitionContext.containerView() else {
+        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) else {
+//            toView = transitionContext.viewForKey(UITransitionContextToViewKey),
+//            containerView = transitionContext.containerView() else {
                 return
         }
         
@@ -39,7 +39,7 @@ class MCRotateDismissTransitionAnimator: NSObject, UIViewControllerAnimatedTrans
         fromView.layer.anchorPoint = CGPoint(x: 0.5, y: anchorPointY)
         fromView.frame = originFrame
         
-        containerView.insertSubview(toView, belowSubview: fromView)
+//        containerView.insertSubview(toView, belowSubview: fromView)
         
         UIView.animateWithDuration(transitionDuration, delay: 0.0, options: [.CurveEaseIn]
             , animations: {
@@ -47,7 +47,7 @@ class MCRotateDismissTransitionAnimator: NSObject, UIViewControllerAnimatedTrans
         }) { (finished) in
             let wasCancelled = transitionContext.transitionWasCancelled()
             if wasCancelled {
-                toView.removeFromSuperview()
+//                toView.removeFromSuperview()
             }
             
             transitionContext.completeTransition(!wasCancelled)

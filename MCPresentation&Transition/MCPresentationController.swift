@@ -10,11 +10,17 @@ import UIKit
 
 class MCPresentationController: UIPresentationController {
     
-    var dimmingView: UIView!
-//    var presentationWrappingView: UIView!
+    private var dimmingView: UIView!
     
-    override init(presentedViewController: UIViewController, presentingViewController: UIViewController) {
+    /// Presented view will only cover partial screen,
+    /// there is a gap between the top of screen and the top of presented view,
+    /// and this is the height of the gap
+    var topMargin: CGFloat!
+    
+    init(presentedViewController: UIViewController, presentingViewController: UIViewController, topMargin: CGFloat = 64.0) {
         super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
+        
+        self.topMargin = topMargin
         
         // Must set presented VC's modalPresentationStyle to "Custom"
         presentedViewController.modalPresentationStyle = .Custom
@@ -58,18 +64,9 @@ class MCPresentationController: UIPresentationController {
         }
     }
     
-    /**
-     The view returned by this method is animated into position by the animator objects.
-     Normally, this method returns the root view of the presented view controller.
-     */
-//    override func presentedView() -> UIView? {
-//        return presentationWrappingView
-//    }
-    
     override func frameOfPresentedViewInContainerView() -> CGRect {
         if let containerViewBounds = containerView?.bounds {
-            let topMargin: CGFloat = 64.0
-            let rect = CGRect(x: containerViewBounds.origin.x, y: containerViewBounds.origin.y + topMargin, width: containerViewBounds.width, height: containerViewBounds.height - topMargin)
+            let rect = CGRect(x: containerViewBounds.origin.x, y: containerViewBounds.origin.y + topMargin, width: containerViewBounds.width, height: containerViewBounds.height - self.topMargin)
             return rect
         }
         
@@ -82,9 +79,6 @@ class MCPresentationController: UIPresentationController {
         super.containerViewWillLayoutSubviews()
         dimmingView.frame = containerView!.bounds
     }
-    
-//    override func containerViewDidLayoutSubviews() {
-//    }
     
     // MARK: Dismissal Process
     
@@ -104,23 +98,4 @@ class MCPresentationController: UIPresentationController {
         }
     }
     
-    // MARK: Layout
-    
-//    override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
-//        super.preferredContentSizeDidChangeForChildContentContainer(container)
-//        
-//        let containerViewController = container as! UIViewController
-//        if containerViewController == presentedViewController {
-//            containerView?.setNeedsLayout()
-//        }
-//    }
-//    
-//    override func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-//        let containerViewController = container as! UIViewController
-//        if containerViewController == presentedViewController {
-//            return containerViewController.preferredContentSize
-//        } else {
-//            return super.sizeForChildContentContainer(container, withParentContainerSize: parentSize)
-//        }
-//    }
 }
