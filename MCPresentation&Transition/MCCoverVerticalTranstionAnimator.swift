@@ -22,10 +22,12 @@ class MCCoverVerticalTranstionAnimator: NSObject, UIViewControllerAnimatedTransi
 //            containerView = transitionContext.containerView() else {
 //                return
 //        }
-        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
         let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        
+        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) ?? fromViewController.view
+        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
+        
         let containerView = transitionContext.containerView()
         
         let fromFrame = transitionContext.initialFrameForViewController(fromViewController)
@@ -34,6 +36,8 @@ class MCCoverVerticalTranstionAnimator: NSObject, UIViewControllerAnimatedTransi
         let transitionDuration = self.transitionDuration(transitionContext)
         
         let isPresenting = (toViewController.presentingViewController == fromViewController)
+        
+        let scaleTransform = CGAffineTransformMakeScale(0.95, 0.95)
         
         if isPresenting {
             toView?.frame = CGRectOffset(toFrame, 0, toFrame.size.height)
@@ -56,9 +60,11 @@ class MCCoverVerticalTranstionAnimator: NSObject, UIViewControllerAnimatedTransi
         UIView.animateWithDuration(transitionDuration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: []
             , animations: {
                 if isPresenting {
+                    fromView?.transform = scaleTransform
                     toView?.frame = toFrame
                 } else {
                     fromView?.frame = CGRectOffset(fromFrame, 0, fromFrame.size.height)
+                    toViewController.view.transform = CGAffineTransformIdentity
                 }
         }) { (finished) in
             let wasCancelled = transitionContext.transitionWasCancelled()

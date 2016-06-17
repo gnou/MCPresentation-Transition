@@ -29,6 +29,9 @@ class MCRotateDismissTransitionAnimator: NSObject, UIViewControllerAnimatedTrans
                 return
         }
         
+        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        let toView = transitionContext.viewForKey(UITransitionContextToViewKey) ?? toViewController?.view
+        
         let transitionDuration = self.transitionDuration(transitionContext)
         
         let angle = targetEdge == UIRectEdge.Left ? CGFloat(M_PI)/2 : -CGFloat(M_PI)/2
@@ -44,6 +47,7 @@ class MCRotateDismissTransitionAnimator: NSObject, UIViewControllerAnimatedTrans
         UIView.animateWithDuration(transitionDuration, delay: 0.0, options: [.CurveEaseIn]
             , animations: {
                 fromView.transform = transform
+                toView?.transform = CGAffineTransformIdentity
         }) { (finished) in
             let wasCancelled = transitionContext.transitionWasCancelled()
             if wasCancelled {
